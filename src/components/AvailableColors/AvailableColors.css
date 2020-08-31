@@ -1,0 +1,29 @@
+.available_colors {
+
+}
+
+.available_colors__title {
+    vertical-align: center;
+}
+
+.available_colors__list {
+    overflow-x: scroll;
+    display: flex;
+}
+
+.available_colors__list::-webkit-scrollbar { width: 0 }
+
+
+.available_colors__list_item {
+    list-style: none;
+    margin-right: 0.7rem;
+    padding: 2px;
+}
+
+.available_colors__button {
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    width: 2rem;
+    height: 2rem;
+}

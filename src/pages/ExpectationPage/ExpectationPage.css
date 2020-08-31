@@ -1,0 +1,31 @@
+.expectation {
+    align-items: center;
+}
+
+.expectation__welcome_text {
+    margin-top: 20rem;
+    text-align: center;
+}
+
+.expectation__buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.expectation__button {
+    border-radius: 2px;
+    border: 1px solid white;
+    text-decoration: none;
+    color: white;
+    margin: 20px;
+    width: 15vw;
+    height: 5vh;
+    padding: 10px;
+    text-align: center;
+    vertical-align: center;
+}
+
+.expectation__button:hover {
+    color: yellowgreen;
+    border: 1px solid yellowgreen;
+}

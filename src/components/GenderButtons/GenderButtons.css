@@ -1,0 +1,12 @@
+.gender_buttons {
+    display: flex;
+    background-color: black;
+    color: white;
+    justify-content: center;
+}
+
+.gender_buttons__toggler {
+    margin-right: 30px;
+    font-size: 2rem;
+    padding: 10px;
+}

@@ -1,0 +1,28 @@
+.container {
+    width: 100vw;
+}
+
+.header {
+    display: flex;
+    background-color: black;
+    justify-content: space-around;
+}
+
+.item {
+    filter: brightness(0) invert(1);
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
+
+.item__icon {
+    width: 5rem;
+}
+
+.item__text {
+    font-size: 1.3rem;
+    padding: 20px;
+    text-align: center;
+}

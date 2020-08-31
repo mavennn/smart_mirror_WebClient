@@ -1,0 +1,108 @@
+.basket {
+
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.basket_things_list {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15rem;
+}
+
+.basket_things_list::-webkit-scrollbar { width: 0 }
+
+.basket_things_list__item {
+    width: 300px;
+    height: 400px;
+    margin-right: 30px;
+    list-style: none;
+}
+
+.basket_item_cart {
+    width: 300px;
+    height: 400px;
+    text-align: center;
+}
+
+.basket_cart__image_container {
+    width: 300px;
+    height: 400px;
+    line-height: 400px;
+    border-radius: 10px;
+    vertical-align: center;
+    text-align: center;
+    background-color: white;
+    margin-bottom: 20px;
+}
+
+.basket_cart__image {
+    height: inherit;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.basket_cart__title {
+    font-size: 1.5rem;
+    color: yellowgreen;
+    height: 5rem;
+}
+
+.basket_cart__color {}
+
+.basket_cart__size {}
+
+.basket_cart__delete_row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.basket_cart__delete_row_icon {
+    filter: brightness(0) invert(1);
+    width: 30px;
+}
+
+.basket_cart__delete_row_title {
+    color: white;
+    margin-left: 10px;
+}
+
+.basket_footer {
+    display: flex;
+    justify-content: center;
+}
+
+.basket_footer__button {
+    color: white;
+    outline: none; /* Для синий ободки */
+    border: 1px solid white;
+    border-radius: 5px;
+    background: transparent;
+    margin: 0 3rem;
+    padding: 1rem;
+    width: 15%;
+}
+
+.basket_footer__button:hover {
+    color: yellowgreen;
+    border: 1px solid yellowgreen;
+}
+
+.waiting {
+    font-size: 2rem;
+    margin-top: 15rem;
+    text-align: center;
+    flex: 1 0 auto;
+}
+
+.waiting_text {
+
+}

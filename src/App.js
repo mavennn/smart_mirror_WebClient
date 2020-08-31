@@ -1,19 +1,44 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Root from './Root';
-import createRootReducer from "./store/reducers/rootReducer";
-import { useHistory } from 'react-router';
-import { createStore, applyMiddleware } from "redux";
-import thunk from 'redux-thunk';
-import './app.global.css';
+import { createBrowserHistory } from 'history';
+import configureStore from "./store/configureStore";
+import { Provider } from "react-redux";
+import { ConnectedRouter } from "connected-react-router";
+import { Route, Switch } from "react-router";
+import routes from "./constants/routes";
+import ExpectationPageContainer from "./pages/ExpectationPage/ExpectationPageContainer";
+import CatalogContainer from "./pages/CatalogPage/CatalogPageContainer";
+import BasketPageContainer from "./pages/BasketPage/BasketPageContainer";
+import MirrorPageContainer from "./pages/MirrorPage/MirrorPageContainer";
+import HomePageContainer from "./pages/HomePage/HomePageContainer";
+import './index.css';
+import checkInaction from "./helpers/check-in-action";
 
-const App = () => {
+const history = createBrowserHistory();
+const store = configureStore(history);
 
-   const history = useHistory();
-   const rootReducer = createRootReducer(history);
-   const store = createStore(rootReducer, applyMiddleware(thunk));
+class App extends React.Component {
 
-   return <Root store={store} history={history} />
-};
 
-ReactDOM.render(<App />, document.getElementById("root"));
+    componentDidMount() {
+        checkInaction(history);
+    }
+
+    render() {
+      return (
+          <Provider store={store}>
+             <ConnectedRouter history={history}>
+                <Switch>
+                   <Route path={routes.EXPECTATION} component={ExpectationPageContainer} />
+                   <Route path={routes.CATALOG} component={CatalogContainer} />
+                   <Route path={routes.BASKET} component={BasketPageContainer} />
+                   <Route path={routes.MIRROR} component={MirrorPageContainer} />
+                   <Route path={routes.HOME} component={HomePageContainer} />
+                </Switch>
+             </ConnectedRouter>
+          </Provider>
+      )
+   }
+}
+
+export default App;
+
