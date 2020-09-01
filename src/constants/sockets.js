@@ -8,5 +8,5 @@ export default {
   ROOMS: "rooms",
   CALL_TEXT: "Подойти в комнату",
   BRING_TEXT: "Запрос товара",
-  TO_CHECKOUT_TEXT: "Отнести на кассу"
-}
+  TO_CHECKOUT_TEXT: "Отнести на кассу",
+};

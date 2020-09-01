@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import routes from '../../constants/routes';
-import styles from './Header.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import routes from "../../constants/routes";
+import styles from "./Header.css";
 
-import eye from '../../assets/icons/eye.svg';
+import eye from "../../assets/icons/eye.svg";
 
 const MirrorButton = () => (
   <Link to={routes.MIRROR} className={styles.item}>

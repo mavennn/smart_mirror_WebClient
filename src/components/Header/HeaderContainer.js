@@ -1,31 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
 
-import Header from './Header';
-import { getConsultantThunkCreator } from '../../store/actions/socketsActions';
+import Header from "./Header";
 
-const HeaderContainer = ({
-  location,
-  isConsultantCalled,
-  getConsultantThunkCreator,
-  basketCount,
-}) => (
-  <Header
-    location={location}
-    isConsultantCalled={isConsultantCalled}
-    getConsultant={getConsultantThunkCreator}
-    basketCount={basketCount}
-  />
+const HeaderContainer = ({ location, basketCount }) => (
+  <Header location={location} basketCount={basketCount} />
 );
 
-const mapStateToProps = (state) => ({
-  location: state.router.location.pathname,
-  isConsultantCalled: state.sockets.isConsultantCalled,
-  basketCount: state.basketThings.count,
-});
-
-const mapDispatchToProps = {
-  getConsultantThunkCreator,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);
+export default HeaderContainer;

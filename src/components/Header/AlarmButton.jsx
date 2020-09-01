@@ -1,9 +1,9 @@
-import React from 'react';
-import styles from './Header.css';
+import React from "react";
+import styles from "./Header.css";
 
-import alarm from '../../assets/icons/alarm.svg';
-import error from '../../assets/icons/error.svg';
-import sockets from '../../constants/sockets';
+import alarm from "../../assets/icons/alarm.svg";
+import error from "../../assets/icons/error.svg";
+import sockets from "../../constants/sockets";
 
 const AlarmButton = ({ isConsultantCalled, getConsultant }) => {
   const params = isConsultantCalled
@@ -13,8 +13,8 @@ const AlarmButton = ({ isConsultantCalled, getConsultant }) => {
   const image = isConsultantCalled ? error : alarm;
 
   const iconText = isConsultantCalled
-    ? 'Отменить вызов'
-    : 'Вызвать консультанта';
+    ? "Отменить вызов"
+    : "Вызвать консультанта";
 
   return (
     <a className={styles.item} onClick={() => getConsultant(params)}>

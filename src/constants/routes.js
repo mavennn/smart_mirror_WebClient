@@ -3,5 +3,5 @@ export default {
   EXPECTATION: "/expectation",
   BASKET: "/basket",
   CATALOG: "/catalog",
-  MIRROR: "/mirror"
-}
+  MIRROR: "/mirror",
+};

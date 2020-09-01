@@ -1,4 +1,4 @@
-import routes from '../constants/routes';
+import routes from "../constants/routes";
 
 export default function checkInaction(history) {
   let timer;
@@ -18,6 +18,6 @@ export default function checkInaction(history) {
 
   function timerReset() {
     clearTimeout(timer);
-    timer = setTimeout(timerElapsed, 7 * 60 * 1000); // 7 min
+    timer = setTimeout(timerElapsed, 1 * 10 * 1000); // 10 sec
   }
 }

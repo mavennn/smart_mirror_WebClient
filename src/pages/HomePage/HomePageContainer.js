@@ -1,15 +1,19 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import './HomePage.css';
+import React from "react";
+import api from "../../api";
+import "./HomePage.css";
 
-import HomePage from './HomePage';
+import HomePage from "./HomePage";
 
-const HomePageContainer = ({ currentThing }) => (
-  <HomePage currentThing={currentThing} />
-);
+const HomePageContainer = () => {
+  const [product, setProduct] = React.useState({});
 
-const mapStateToProps = (state) => ({
-  currentThing: state.currentThing,
-});
+  React.useEffect(() => {
+    api.products.getByBarcode("8966756").then((data) => {
+      setProduct(data);
+    });
+  }, [setProduct]);
 
-export default connect(mapStateToProps, null)(HomePageContainer);
+  return <HomePage product={product} />;
+};
+
+export default HomePageContainer;

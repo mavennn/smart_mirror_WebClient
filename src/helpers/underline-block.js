@@ -1,16 +1,14 @@
 const underlineBlock = (block, border) => {
-  const allColorsButtonsArray = [
-    ...document.querySelectorAll(block),
-  ];
+  const allColorsButtonsArray = [...document.querySelectorAll(block)];
   allColorsButtonsArray.map((button) => {
-    button.addEventListener('click', () => {
+    button.addEventListener("click", () => {
       allColorsButtonsArray.map((color) => {
-        color.style.borderBottom = '0px';
+        color.style.borderBottom = "0px";
       });
       button.style.borderBottom = border;
     });
   });
-}
+};
 
 export default underlineBlock;
 

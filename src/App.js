@@ -1,44 +1,39 @@
-import React from 'react';
-import { createBrowserHistory } from 'history';
-import configureStore from "./store/configureStore";
-import { Provider } from "react-redux";
-import { ConnectedRouter } from "connected-react-router";
-import { Route, Switch } from "react-router";
+import React from "react";
+import { createBrowserHistory } from "history";
+import { Route, Switch, Router } from "react-router";
 import routes from "./constants/routes";
-import ExpectationPageContainer from "./pages/ExpectationPage/ExpectationPageContainer";
-import CatalogContainer from "./pages/CatalogPage/CatalogPageContainer";
-import BasketPageContainer from "./pages/BasketPage/BasketPageContainer";
-import MirrorPageContainer from "./pages/MirrorPage/MirrorPageContainer";
+import ExpectationPage from "./pages/ExpectationPage/ExpectationPage";
+import CatalogContainer from "./pages/CatalogPage/CatalogPage";
+import BasketPage from "./pages/BasketPage/BasketPage";
+import MirrorPage from "./pages/MirrorPage/MirrorPage";
 import HomePageContainer from "./pages/HomePage/HomePageContainer";
-import './index.css';
+import "./index.css";
 import checkInaction from "./helpers/check-in-action";
+import api from "./api";
 
 const history = createBrowserHistory();
-const store = configureStore(history);
 
-class App extends React.Component {
+function App() {
+  React.useEffect(() => {
+    checkInaction(history);
+    const userAgent = window.navigator.userAgent;
 
+    api.user
+      .login(userAgent)
+      .then((userID) => localStorage.setItem("userId", userID));
+  }, []);
 
-    componentDidMount() {
-        checkInaction(history);
-    }
-
-    render() {
-      return (
-          <Provider store={store}>
-             <ConnectedRouter history={history}>
-                <Switch>
-                   <Route path={routes.EXPECTATION} component={ExpectationPageContainer} />
-                   <Route path={routes.CATALOG} component={CatalogContainer} />
-                   <Route path={routes.BASKET} component={BasketPageContainer} />
-                   <Route path={routes.MIRROR} component={MirrorPageContainer} />
-                   <Route path={routes.HOME} component={HomePageContainer} />
-                </Switch>
-             </ConnectedRouter>
-          </Provider>
-      )
-   }
+  return (
+    <Router history={history}>
+      <Switch>
+        <Route path={routes.EXPECTATION} component={ExpectationPage} />
+        <Route path={routes.CATALOG} component={CatalogContainer} />
+        <Route path={routes.BASKET} component={BasketPage} />
+        <Route path={routes.MIRROR} component={MirrorPage} />
+        <Route path={routes.HOME} component={HomePageContainer} />
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;
-
