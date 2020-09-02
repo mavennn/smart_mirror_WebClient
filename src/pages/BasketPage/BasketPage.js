@@ -42,6 +42,8 @@ const BasketPage = () => {
 
   React.useEffect(() => {
     const userId = localStorage.getItem("userId");
+
+
     // получаем вещи из корзины для пользователя
     if (userId) {
       api.basket.getAll(userId).then((data) => {
@@ -53,7 +55,7 @@ const BasketPage = () => {
   if (basketItems.length !== 0) {
     return (
       <div className={styles.container}>
-        <HeaderContainer />
+        <HeaderContainer basketCount={basketItems.length}/>
         <ul className={styles.basket_things_list}>
           {basketItems.map((item) => (
             <li key={item.id} className={styles.basket_things_list__item}>

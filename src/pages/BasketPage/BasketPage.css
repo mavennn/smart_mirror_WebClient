@@ -14,7 +14,8 @@
 .basket_things_list {
     display: flex;
     justify-content: center;
-    margin-bottom: 15rem;
+    margin-bottom: 11rem;
+    margin-top: 2rem;
 }
 
 .basket_things_list::-webkit-scrollbar { width: 0 }
@@ -44,7 +45,7 @@
 }
 
 .basket_cart__image {
-    height: inherit;
+    height: 300px;
     object-fit: contain;
     vertical-align: middle;
 }

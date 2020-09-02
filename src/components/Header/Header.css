@@ -4,6 +4,7 @@
 
 .header {
     display: flex;
+    margin-top: 15px;
     background-color: black;
     justify-content: space-around;
 }
@@ -14,15 +15,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    width: 200px;
 }
 
 .item__icon {
-    width: 5rem;
+    width: 3.5rem;
 }
 
 .item__text {
-    font-size: 1.3rem;
+    font-size: 0.9rem;
     padding: 20px;
     text-align: center;
 }

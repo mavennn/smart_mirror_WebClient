@@ -19,7 +19,8 @@
 }
 
 .item__icon {
-    width: 5rem;
+    width: 3.5rem;
+    margin: 20px 0;
 }
 
 .item__text {

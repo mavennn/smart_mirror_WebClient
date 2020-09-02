@@ -47,6 +47,7 @@ class ThingInfo extends React.Component {
 
     if (userId && productId) {
       api.basket.add(userId, productId).then((res) => alert("Добавлено"));
+
     }
   }
 
@@ -89,8 +90,8 @@ class ThingInfo extends React.Component {
             <div className={styles.info__brand}>
               <h3>{brand}</h3>
             </div>
-            <div className={styles.info__brand}>
-              <h3>{price}</h3>
+            <div className={styles.info__price}>
+              <h3>{price} руб</h3>
             </div>
           </div>
           <div className={styles.colors_and_sizes}>

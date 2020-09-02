@@ -4,7 +4,7 @@
 }
 
 .main {
-  margin-top: 20px;
+  margin-top: 30px;
   display: flex;
 }
 
@@ -22,6 +22,12 @@
   color: yellowgreen;
 }
 
+.info__price {
+  text-align: center;
+  font-size: 20px;
+  padding-top: 25px;
+}
+
 .colors_and_sizes {
   text-align: center;
   padding: 10px;
@@ -31,11 +37,10 @@
 .user_buttons {
   padding: 10px;
   width: 25%;
-  text-align: center;
 }
 
 .user_button {
-  margin-top: 5rem;
+  margin-top: 4rem;
   color: white;
   outline: none; /* Для синий ободки */
   border: 1px solid white;
@@ -56,11 +61,11 @@
 }
 
 .image {
-  width: 300px;
-  height: 400px;
-  line-height: 400px;
+  width: 225px;
+  height: 300px;
   border-radius: 10px;
-  text-align: center;
+  margin-left: 30px;
+  margin-bottom: 30px;
   background-color: white;
   object-fit: contain;
   vertical-align: middle;
@@ -99,7 +104,7 @@
 
 /* Размеры */
 .available_sizes {
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 .available_sizes__title {
@@ -108,13 +113,14 @@
 
 .available_sizes__list {
   overflow-x: scroll;
-  display: flex;
+  display: inline-block;
 }
 
 .available_sizes__list::-webkit-scrollbar { width: 0 }
 
 .available_sizes__list_item {
   list-style: none;
+  float: left;
   margin-right: 0.7rem;
 }
 
@@ -125,6 +131,10 @@
   background: transparent;
   color: white;
   height: 2rem;
+}
+
+.available_sizes_button:focus {
+  color: yellowgreen;
 }
 
 
@@ -187,6 +197,7 @@
   overflow-x: scroll;
   height: 300px;
   padding: 0;
+  margin-right: 70px;
 }
 
 .history__list::-webkit-scrollbar { width: 0 }
@@ -194,15 +205,12 @@
 
 .history__list_item {
   margin-right: 1rem;
-  width: 100px;
-  height: 200px;
   list-style: none;
 }
 
 .history__list_item_image_container {
-  width: 100px;
+  width: 150px;
   height: 200px;
-  line-height: 200px;
   border-radius: 10px;
   vertical-align: center;
   text-align: center;
@@ -213,6 +221,7 @@
   height: inherit;
   object-fit: contain;
   vertical-align: middle;
+  width: inherit;
 }
 
 .history__list_item_title {

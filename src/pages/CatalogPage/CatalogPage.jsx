@@ -5,6 +5,7 @@ import api from "../../api";
 
 const CatalogPage = () => {
   const [products, setProducts] = React.useState([]);
+  const [basketItems, setBasketItems] = React.useState([]);
 
   const GenderTypes = Object.freeze({
     MALE: 0,
@@ -13,6 +14,19 @@ const CatalogPage = () => {
   });
 
   React.useEffect(() => {
+    const userId = localStorage.getItem("userId");
+
+
+    // получаем вещи из корзины для пользователя
+    if (userId) {
+      api.basket.getAll(userId).then((data) => {
+        setBasketItems(data);
+      });
+    }
+  }, [setBasketItems]);
+
+  React.useEffect(() => {
+
     // по умолчанию загружаем мужские
     api.catalog.getProductByGender(GenderTypes.MALE).then((products) => {
       setProducts(products);
@@ -31,9 +45,12 @@ const CatalogPage = () => {
     }
   };
 
+
+
+
   return (
     <div className={styles.container}>
-      <HeaderContainer />
+      <HeaderContainer basketCount={basketItems.length}/>
 
       {/* табы "Мужчнам" "Женщинам" "Детям" */}
       <div className={styles.gender_buttons}>

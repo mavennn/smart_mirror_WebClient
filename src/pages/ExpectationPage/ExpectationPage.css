@@ -5,6 +5,7 @@
 .expectation__welcome_text {
     margin-top: 20rem;
     text-align: center;
+    color: white;
 }
 
 .expectation__buttons {
@@ -28,4 +29,8 @@
 .expectation__button:hover {
     color: yellowgreen;
     border: 1px solid yellowgreen;
+}
+
+html{
+    background-color: black !important;
 }
