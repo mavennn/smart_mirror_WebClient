@@ -14,24 +14,21 @@ const CatalogPage = () => {
   });
 
   React.useEffect(() => {
-    const userId = localStorage.getItem("userId");
+      const userId = localStorage.getItem("userId");
 
-
-    // получаем вещи из корзины для пользователя
-    if (userId) {
-      api.basket.getAll(userId).then((data) => {
-        setBasketItems(data);
-      });
-    }
-  }, [setBasketItems]);
-
-  React.useEffect(() => {
+      // получаем вещи из корзины для пользователя
+      if (userId) {
+          api.basket.getAll(userId).then((data) => {
+              setBasketItems(data);
+          });
+      }
 
     // по умолчанию загружаем мужские
     api.catalog.getProductByGender(GenderTypes.MALE).then((products) => {
+        console.log(products);
       setProducts(products);
     });
-  }, [setProducts]);
+  }, [setBasketItems, setProducts]);
 
   const handleGenderButtonClick = (genderId) => {
     api.catalog.getProductByGender(genderId).then((products) => {
@@ -44,9 +41,6 @@ const CatalogPage = () => {
       location.href = `/?barcode=${barcode}`;
     }
   };
-
-
-
 
   return (
     <div className={styles.container}>
@@ -90,7 +84,7 @@ const CatalogPage = () => {
           >
             <div className={styles.things_list__item_image_container}>
               <img
-                src={product.images[0].url}
+                src={product.images.length !== 0 ? product.images[0].url : "#"}
                 className={styles.things_list__item_image}
               />
             </div>

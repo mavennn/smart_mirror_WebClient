@@ -3,7 +3,7 @@ import Emoji from "../../components/Emoji/Emoji";
 import { Link, useHistory } from "react-router-dom";
 import routes from "../../constants/routes";
 import api from "../../api";
-import styles from "./ExpectationPage.css"
+import styles from "./ExpectationPage.css";
 
 const ExpectationPage = () => {
   const history = useHistory();

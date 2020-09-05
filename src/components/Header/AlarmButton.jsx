@@ -1,24 +1,29 @@
 import React from "react";
 import styles from "./Header.css";
+import getConsultantIcon from "../../assets/icons/alarm.svg";
+import cancelConcultantIcon from "../../assets/icons/error.svg";
+import socketConnection from "../../socketConnection";
 
-import alarm from "../../assets/icons/alarm.svg";
-import error from "../../assets/icons/error.svg";
-import sockets from "../../constants/sockets";
+const AlarmButton = () => {
 
-const AlarmButton = ({ isConsultantCalled, getConsultant }) => {
-  const params = isConsultantCalled
-    ? sockets.CANCEL_CONSULTANT
-    : sockets.CALL_CONSULTANT;
+  const buttonIcon = isConsultantCalled ? cancelConcultantIcon : getConsultantIcon;
 
-  const image = isConsultantCalled ? error : alarm;
+  const [isConsultantCalled, setIsConsultantCalled] = React.useState(false);
 
   const iconText = isConsultantCalled
     ? "Отменить вызов"
     : "Вызвать консультанта";
 
+  const handleGetConsultantClick = () => {
+
+      // эммитим событие "подойти"
+      socketConnection.comeUp("comeUp")
+          .then(() => {});
+  };
+
   return (
-    <a className={styles.item} onClick={() => getConsultant(params)}>
-      <img src={image} alt="header_icon" className={styles.item__icon} />
+    <a className={styles.item} onClick={() => handleGetConsultantClick()}>
+      <img src={buttonIcon} alt="header_icon" className={styles.item__icon} />
       <div className={styles.item__text}>
         <h3>{iconText}</h3>
       </div>

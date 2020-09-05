@@ -5,6 +5,7 @@ import HeaderContainer from "../../components/Header/HeaderContainer";
 import removeIcon from "../../assets/icons/trash.svg";
 import EmptyBasket from "./EmptyBasket";
 import api from "../../api";
+import socketConnection from "../../socketConnection";
 
 const BasketPage = () => {
   const history = useHistory();
@@ -37,12 +38,12 @@ const BasketPage = () => {
   };
 
   const handlePassToCheckoutClick = () => {
-    console.log("handlePassToCheckoutClick");
-  };
+     socketConnection.toCheckout()
+         .then(() => {})
+  }
 
   React.useEffect(() => {
     const userId = localStorage.getItem("userId");
-
 
     // получаем вещи из корзины для пользователя
     if (userId) {
@@ -55,7 +56,7 @@ const BasketPage = () => {
   if (basketItems.length !== 0) {
     return (
       <div className={styles.container}>
-        <HeaderContainer basketCount={basketItems.length}/>
+        <HeaderContainer basketCount={basketItems.length} />
         <ul className={styles.basket_things_list}>
           {basketItems.map((item) => (
             <li key={item.id} className={styles.basket_things_list__item}>
@@ -67,7 +68,7 @@ const BasketPage = () => {
                   onClick={() => handleBasketItemClick(item.barcode)}
                 >
                   <img
-                    src={item.images[0].url}
+                    src={item.images.length !== 0 ? item.images[0].url : "#"}
                     className={styles.basket_cart__image}
                   />
                 </div>

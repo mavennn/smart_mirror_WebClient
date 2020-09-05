@@ -10,7 +10,7 @@ const config = {
     },
     devtool: "source-map",
     resolve: {
-        extensions: [".js", ".jsx"]
+        extensions: [".js", ".jsx", ".ts"]
     },
     module: {
         rules: [
@@ -29,6 +29,10 @@ const config = {
                         ]
                     }
                 }
+            },
+            {
+                test: /\.ts$/,
+                use: "ts-loader",
             },
             {
                 test: /\.css$/,

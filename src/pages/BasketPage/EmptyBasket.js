@@ -3,11 +3,10 @@ import styles from "./BasketPage.css";
 import HeaderContainer from "../../components/Header/HeaderContainer";
 import Emoji from "../../components/Emoji/Emoji";
 
-
 const EmptyBasket = () => {
   return (
     <div className={styles.container}>
-      <HeaderContainer basketCount={0}/>
+      <HeaderContainer basketCount={0} />
       <div className={styles.waiting}>
         <span className={styles.waiting_text}>
           Здесь пока ничего нет

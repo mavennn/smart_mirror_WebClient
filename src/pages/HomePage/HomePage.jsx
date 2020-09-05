@@ -3,18 +3,15 @@ import styles from "./HomePage.css";
 
 import Emoji from "../../components/Emoji/Emoji";
 import HeaderContainer from "../../components/Header/HeaderContainer";
-import ThingInfoContainer from "../../components/ThingInfo/ThingInfo";
-import Loader from "../../components/Loader/Loader";
 import ThingInfo from "../../components/ThingInfo/ThingInfo";
+import Loader from "../../components/Loader/Loader";
 import api from "../../api";
 
-const HomePage = ({ product }) => {
-    debugger;
+const HomePage = ({ product,hubConnection }) => {
     const [basketItems, setBasketItems] = React.useState([]);
 
     React.useEffect(() => {
         const userId = localStorage.getItem("userId");
-
 
         // получаем вещи из корзины для пользователя
         if (userId) {
@@ -36,7 +33,7 @@ const HomePage = ({ product }) => {
 
   const getPage = (name) => {
     if (name !== "") {
-      return <ThingInfoContainer />;
+      return <ThingInfo hubConnection={hubConnection} />;
     }
     return noThing;
   };

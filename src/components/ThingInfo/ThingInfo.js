@@ -3,6 +3,10 @@ import api from "../../api";
 import styles from "./ThingInfo.css";
 import fixSize from "../../helpers/fix-size";
 import findGetParameter from "../../helpers/findGetParametr";
+import RequestType from "../../constants/RequestType";
+import Swal from 'sweetalert2';
+import ADD_TO_BASKET_STATUS from "../../constants/addToBasketStatus";
+import testConnection from "../../socketConnection";
 
 class ThingInfo extends React.Component {
   constructor(props) {
@@ -15,7 +19,7 @@ class ThingInfo extends React.Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     fixSize();
 
     const userId = localStorage.getItem("userId");
@@ -33,6 +37,7 @@ class ThingInfo extends React.Component {
 
           // Делаем запись о просмотре и получаем обновленный список истории
           api.history.write(userId, product.id).then((res) => {
+
             // получаем просмоотренные вещи
             api.history.getAll(userId).then((historyItems) => {
               this.setState({ historyItems });
@@ -46,13 +51,35 @@ class ThingInfo extends React.Component {
     const userId = localStorage.getItem("userId");
 
     if (userId && productId) {
-      api.basket.add(userId, productId).then((res) => alert("Добавлено"));
+      api.basket.add(userId, productId)
+          .then((statusCode) => {
 
+            switch (statusCode) {
+              case ADD_TO_BASKET_STATUS.SUCCESS:
+                Swal.fire({
+                  title: 'Товар добавлен в корзину!',
+                  type: 'success',
+                  timer: 1000,
+                  icon: 'success',
+                });
+                break;
+              case ADD_TO_BASKET_STATUS.ALREADY_EXISTS:
+                Swal.fire({
+                  title: 'Товар уже есть в корзине!',
+                  type: 'info',
+                  icon: 'info',
+                  confirmButtonText: 'OK',
+                });
+                break;
+            }
+
+          });
     }
   }
 
   handleBringThingClick() {
-    console.log("handleBringThingClick");
+      testConnection.bringThing()
+          .then(() => {});
   }
 
   handleProductClick(barcode) {
@@ -209,7 +236,7 @@ class ThingInfo extends React.Component {
                 >
                   <div className={styles.history__list_item_image_container}>
                     <img
-                      src={item.images[0].url}
+                      src={item.images.length !== 0 ? item.images[0].url : "#"}
                       className={styles.history__list_item_image}
                     />
                   </div>

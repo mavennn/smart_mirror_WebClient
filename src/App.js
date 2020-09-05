@@ -10,10 +10,13 @@ import HomePageContainer from "./pages/HomePage/HomePageContainer";
 import "./index.css";
 import checkInaction from "./helpers/check-in-action";
 import api from "./api";
+import * as signalR from '@microsoft/signalr';
+import config from "./config";
 
 const history = createBrowserHistory();
 
 function App() {
+
   React.useEffect(() => {
     checkInaction(history);
     const userAgent = window.navigator.userAgent;
@@ -21,18 +24,27 @@ function App() {
     api.user
       .login(userAgent)
       .then((userID) => localStorage.setItem("userId", userID));
+
   }, []);
 
   return (
     <Router history={history}>
-      <Switch>
-        <Route path={routes.EXPECTATION} component={ExpectationPage} />
-        <Route path={routes.CATALOG} component={CatalogContainer} />
-        <Route path={routes.BASKET} component={BasketPage} />
-        <Route path={routes.MIRROR} component={MirrorPage} />
-        <Route path={routes.HOME} component={HomePageContainer} />
-      </Switch>
+      <Wrapper />
     </Router>
+  );
+}
+
+
+const Wrapper = () => {
+
+  return (
+    <Switch>
+      <Route path={routes.EXPECTATION} component={ExpectationPage} />
+      <Route path={routes.CATALOG} component={CatalogContainer} />
+      <Route path={routes.BASKET} component={BasketPage} />
+      <Route path={routes.MIRROR} component={MirrorPage} />
+      <Route path={routes.HOME}  component={HomePageContainer} />
+    </Switch>
   );
 }
 
